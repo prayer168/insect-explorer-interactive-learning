@@ -56,3 +56,12 @@ v0.1.0 功能、內容與技術檢查均通過，可發布至 GitHub Pages。
 - **變態動畫圖文同步**：完全變態 egg→larva→pupa→adult、不完全變態 i-egg→i-nymph→i-adult，每一步「可見圖、階段流程列、說明文字」三者一致；完全／不完全切換正確。
 - **缺陷修正驗證**：修正前 SVG `<g>` 以 `element.hidden` 切換無效，造成各階段圖未真正更換、隱藏的變態類型透出；改用 attribute + `.morph-set[hidden]` CSS 後，以 `getBoundingClientRect().width === 0` 確認隱藏集合確實未渲染，畫面僅顯示單一正確階段圖。
 - 操作全程 console 無錯誤。
+
+---
+
+## v1.0.0 結案檢核（2026-06-19）
+- 4 個 JSON 檔（content / quiz / resources / curriculum）皆通過 JSON.parse。
+- 程式碼掃描：無殘留 `navigation.js` / `window.Nav` 參考、無 SVG 的 `element.hidden` 反模式、無本機絕對路徑或 `localhost` / `file://`。
+- 線上驗證：GitHub Pages 狀態 `built`，7 個頁面（index / where / grow / important / apply / quiz / resources）皆回應 200。
+- 本地與遠端同步（main 與 origin/main 無落差）。
+- 結論：功能、內容、技術三項檢核通過，正式發布 v1.0.0。
