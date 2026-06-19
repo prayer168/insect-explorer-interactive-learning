@@ -1,0 +1,22 @@
+{
+  "name": "insect-explorer-interactive-learning",
+  "version": "0.1.0",
+  "description": "昆蟲大解密 — 國小中年級自然科學互動式數位教材",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "education",
+    "insects",
+    "interactive-learning",
+    "k12",
+    "science"
+  ],
+  "author": "prayer168",
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

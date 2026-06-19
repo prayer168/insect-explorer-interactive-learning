@@ -1,0 +1,33 @@
+{
+  "name": "insect-explorer",
+  "title": "昆蟲大解密",
+  "repository": "insect-explorer-interactive-learning",
+  "version": "0.1.0",
+  "level": "國小",
+  "grade": "中年級（3-4年級）",
+  "subject": "自然科學",
+  "duration": "40分鐘",
+  "mode": "引導模式",
+  "style": "清爽、自然、教學寫實",
+  "language": "zh-TW",
+  "tabs": [
+    "學習任務",
+    "昆蟲在哪裡",
+    "昆蟲如何長大",
+    "昆蟲重要嗎",
+    "生活應用",
+    "闖關大挑戰",
+    "自主學習"
+  ],
+  "features": {
+    "audio": false,
+    "progress_tracking": true,
+    "teacher_guide": true
+  },
+  "quiz_count": 10,
+  "resource_count": 8,
+  "deploy": {
+    "target": "github-pages",
+    "owner": "prayer168"
+  }
+}

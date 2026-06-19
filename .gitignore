@@ -1,0 +1,22 @@
+# 相依套件
+node_modules/
+
+# 建置輸出
+dist/
+
+# 環境與機密
+.env
+.env.*
+config.js
+*.key
+*.pem
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 編輯器
+.vscode/
+.idea/
+*.log
