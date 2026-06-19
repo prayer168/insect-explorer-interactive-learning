@@ -39,7 +39,9 @@
 
 /* 變態階段淡入 */
 .morph-fig { transition: opacity .5s ease; }
-.morph-fig[hidden] { display: none; }
+/* SVG <g> 不一定吃瀏覽器預設的 [hidden] 規則，明確以 display 隱藏 */
+.morph-set[hidden],
+.morph-fig[hidden] { display: none !important; }
 
 /* 進度條閃光 */
 @keyframes shine {

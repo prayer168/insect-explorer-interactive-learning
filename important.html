@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>昆蟲大解密 ｜ 昆蟲重要嗎</title>
+  <meta name="description" content="透過授粉互動模擬，認識昆蟲在授粉、分解、食物鏈中的重要角色。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body data-page="important">
+  <header id="siteHeader"></header>
+  <nav id="tabNav"></nav>
+
+  <main>
+    <h2 class="section-title">🌍 昆蟲重要嗎</h2>
+    <p class="lead">別看昆蟲小小的，牠們對大自然和我們的生活非常重要！</p>
+
+    <div class="card">
+      <h3>🐝 互動模擬：蜜蜂幫花朵授粉</h3>
+      <p>點點看每一朵花，讓蜜蜂飛來授粉，看看會發生什麼事！</p>
+      <div style="text-align:center">
+        <svg viewBox="0 0 400 220" width="100%" style="max-width:560px" id="pollinate" role="img" aria-label="蜜蜂在花朵間飛行授粉的模擬，授粉後花朵會結出果實">
+          <rect x="0" y="170" width="400" height="50" fill="#bfe39a"/>
+          <g class="bee-fly">
+            <ellipse cx="40" cy="40" rx="16" ry="11" fill="#ffce4d" stroke="#5a3a14" stroke-width="2"/>
+            <path d="M34 30 v20 M42 30 v20" stroke="#5a3a14" stroke-width="3"/>
+            <ellipse cx="30" cy="34" rx="9" ry="6" fill="#cfe8ff" opacity=".8"/>
+            <circle cx="54" cy="38" r="6" fill="#5a3a14"/>
+          </g>
+          <g class="flower" transform="translate(80,140)">
+            <line x1="0" y1="0" x2="0" y2="40" stroke="#4caf72" stroke-width="5"/>
+            <g class="petals"><circle class="petal" cx="0" cy="-18" r="11" fill="#f7c5d9"/><circle class="petal" cx="-15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="-9" cy="10" r="11" fill="#f7c5d9"/><circle class="petal" cx="9" cy="10" r="11" fill="#f7c5d9"/></g>
+            <circle cx="0" cy="-4" r="8" fill="#ffce4d"/>
+            <circle class="fruit" cx="22" cy="-2" r="9" fill="#e8513b" opacity="0"/>
+          </g>
+          <g class="flower" transform="translate(200,150)">
+            <line x1="0" y1="0" x2="0" y2="40" stroke="#4caf72" stroke-width="5"/>
+            <g class="petals"><circle class="petal" cx="0" cy="-18" r="11" fill="#f7c5d9"/><circle class="petal" cx="-15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="-9" cy="10" r="11" fill="#f7c5d9"/><circle class="petal" cx="9" cy="10" r="11" fill="#f7c5d9"/></g>
+            <circle cx="0" cy="-4" r="8" fill="#ffce4d"/>
+            <circle class="fruit" cx="22" cy="-2" r="9" fill="#e8513b" opacity="0"/>
+          </g>
+          <g class="flower" transform="translate(320,140)">
+            <line x1="0" y1="0" x2="0" y2="40" stroke="#4caf72" stroke-width="5"/>
+            <g class="petals"><circle class="petal" cx="0" cy="-18" r="11" fill="#f7c5d9"/><circle class="petal" cx="-15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="-9" cy="10" r="11" fill="#f7c5d9"/><circle class="petal" cx="9" cy="10" r="11" fill="#f7c5d9"/></g>
+            <circle cx="0" cy="-4" r="8" fill="#ffce4d"/>
+            <circle class="fruit" cx="22" cy="-2" r="9" fill="#e8513b" opacity="0"/>
+          </g>
+        </svg>
+      </div>
+      <p class="feedback" id="pollinateFeedback"></p>
+      <div class="controls"><button class="btn secondary" id="pollinateReset">🔄 重新開始</button></div>
+    </div>
+
+    <div class="grid grid-2" id="rolesList"></div>
+    <div class="card" id="balanceBox"></div>
+    <div class="key-box" id="importantKey"></div>
+  </main>
+
+  <div id="footNav"></div>
+  <footer id="siteFooter"></footer>
+
+  <script src="js/progress.js"></script>
+  <script src="js/chrome.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

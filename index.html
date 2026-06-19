@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>昆蟲大解密 ｜ 國小自然科學互動教材</title>
+  <title>昆蟲大解密 ｜ 學習任務</title>
   <meta name="description" content="昆蟲大解密：適合國小中年級的自然科學互動教材，認識昆蟲在哪裡、如何成長變化，以及昆蟲的重要性。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;800&display=swap" rel="stylesheet" />
@@ -11,31 +11,12 @@
   <link rel="stylesheet" href="css/animation.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
-<body>
-  <header class="site-header">
-    <div class="bar">
-      <div class="brand"><span class="logo">🐞</span><span>昆蟲大解密</span></div>
-      <div class="progress-wrap">
-        <span>學習進度</span>
-        <div class="progress-track"><div class="progress-fill"></div></div>
-        <span class="progress-label">0%</span>
-      </div>
-    </div>
-  </header>
-
-  <nav class="tabs" role="tablist" aria-label="教材單元">
-    <button class="tab-btn" role="tab" data-tab="home" aria-selected="true">🏠 學習任務</button>
-    <button class="tab-btn" role="tab" data-tab="where" aria-selected="false">🔍 昆蟲在哪裡</button>
-    <button class="tab-btn" role="tab" data-tab="grow" aria-selected="false">🦋 昆蟲如何長大</button>
-    <button class="tab-btn" role="tab" data-tab="important" aria-selected="false">🌍 昆蟲重要嗎</button>
-    <button class="tab-btn" role="tab" data-tab="apply" aria-selected="false">🍎 生活應用</button>
-    <button class="tab-btn" role="tab" data-tab="quiz" aria-selected="false">🏆 闖關大挑戰</button>
-    <button class="tab-btn" role="tab" data-tab="resources" aria-selected="false">📚 自主學習</button>
-  </nav>
+<body data-page="home">
+  <header id="siteHeader"></header>
+  <nav id="tabNav"></nav>
 
   <main>
-    <!-- ===== 學習任務 ===== -->
-    <section class="panel active" id="panel-home" role="tabpanel">
+    <section class="panel active">
       <div class="hero">
         <div class="big-emoji">🐝🦋🐞🐜</div>
         <h1>昆蟲大解密</h1>
@@ -50,287 +31,16 @@
           <h3>🎯 這節課我們要學會</h3>
           <ul id="homeGoals" class="goal-list"></ul>
         </div>
-        <button class="btn big" data-goto="where">開始學習 🚀</button>
+        <a class="btn big" href="where.html">開始學習 🚀</a>
       </div>
-    </section>
-
-    <!-- ===== 昆蟲在哪裡 ===== -->
-    <section class="panel" id="panel-where" role="tabpanel">
-      <h2 class="section-title">🔍 昆蟲在哪裡</h2>
-      <p class="lead">昆蟲幾乎到處都有！只要仔細看，你就會發現牠們躲在許多地方。</p>
-
-      <div class="card">
-        <h3>🐞 先認識昆蟲的身體</h3>
-        <p>昆蟲的身體分成三個部分，記住這個特徵，你就能一眼認出昆蟲！</p>
-        <!-- 昆蟲身體構造 SVG -->
-        <div style="text-align:center">
-          <svg viewBox="0 0 360 160" width="100%" style="max-width:420px" role="img" aria-label="昆蟲身體分為頭、胸、腹三部分，胸部有六隻腳">
-            <!-- 腹 -->
-            <ellipse cx="250" cy="80" rx="60" ry="34" fill="#c98a3a" />
-            <!-- 胸 -->
-            <ellipse cx="160" cy="80" rx="42" ry="32" fill="#e0a44a" />
-            <!-- 頭 -->
-            <circle cx="95" cy="80" r="34" fill="#b5742c" />
-            <!-- 觸角 -->
-            <path d="M80 55 Q60 25 50 30" stroke="#5a3a14" stroke-width="4" fill="none" stroke-linecap="round"/>
-            <path d="M95 50 Q85 20 78 22" stroke="#5a3a14" stroke-width="4" fill="none" stroke-linecap="round"/>
-            <!-- 眼睛 -->
-            <circle cx="86" cy="78" r="7" fill="#2b2b2b" />
-            <!-- 6 隻腳（都長在胸部） -->
-            <g stroke="#5a3a14" stroke-width="5" stroke-linecap="round">
-              <path d="M140 108 L120 140"/><path d="M160 110 L160 145"/><path d="M180 108 L200 140"/>
-              <path d="M140 52 L120 28"/><path d="M160 50 L160 22"/><path d="M180 52 L200 28"/>
-            </g>
-            <!-- 標示 -->
-            <text x="95" y="135" text-anchor="middle" font-size="15" fill="#29382f" font-weight="700">頭</text>
-            <text x="160" y="135" text-anchor="middle" font-size="15" fill="#29382f" font-weight="700">胸</text>
-            <text x="250" y="135" text-anchor="middle" font-size="15" fill="#29382f" font-weight="700">腹</text>
-          </svg>
-        </div>
-        <div class="grid grid-3" id="bodyParts"></div>
-        <div class="key-box" id="bodyKey"></div>
-      </div>
-
-      <!-- 找昆蟲遊戲 -->
-      <div class="card">
-        <h3>🎮 互動遊戲：找出畫面中的昆蟲</h3>
-        <p>畫面裡有很多小動物，點點看哪些是昆蟲（有 6 隻腳）！</p>
-        <div class="scene" id="findScene"></div>
-        <p class="score-pill" id="findScore"></p>
-        <p class="feedback" id="findFeedback"></p>
-        <div class="controls"><button class="btn secondary" id="findReset">🔄 重新開始</button></div>
-      </div>
-
-      <!-- 棲地 -->
-      <div class="card">
-        <h3>🏡 昆蟲住在哪些地方？</h3>
-        <div class="grid grid-3" id="habitatList"></div>
-        <div class="key-box" id="habitatKey"></div>
-      </div>
-
-      <!-- 不是昆蟲 -->
-      <div class="card">
-        <h3>🚫 牠們不是昆蟲喔！</h3>
-        <p>有些小動物看起來很像昆蟲，但腳的數量不對，牠們不是昆蟲。</p>
-        <div class="grid grid-3" id="notInsectList"></div>
-      </div>
-
-      <!-- 分類互動 -->
-      <div class="card">
-        <h3>🧺 互動分類：是昆蟲還是不是？</h3>
-        <p>把每隻小動物拖到正確的盒子。手機可以先點選，再點盒子。</p>
-        <div class="chip-tray" id="sortTray"></div>
-        <div class="sorter">
-          <div class="bin" id="binInsect"><h4>✅ 是昆蟲（6 隻腳）</h4><div class="dropzone"></div></div>
-          <div class="bin" id="binNot"><h4>❌ 不是昆蟲</h4><div class="dropzone"></div></div>
-        </div>
-        <p class="feedback" id="sortFeedback"></p>
-        <div class="controls"><button class="btn secondary" id="sortReset">🔄 重新開始</button></div>
-      </div>
-    </section>
-
-    <!-- ===== 昆蟲如何長大 ===== -->
-    <section class="panel" id="panel-grow" role="tabpanel">
-      <h2 class="section-title">🦋 昆蟲如何長大</h2>
-      <p class="lead">昆蟲長大的時候，身體會改變樣子，這叫做「變態」。有兩種不一樣的長大方式。</p>
-
-      <!-- 變態動畫 -->
-      <div class="card">
-        <h3>🎬 變態動畫：看昆蟲一步步長大</h3>
-        <div class="morph-tabs">
-          <button class="btn" data-type="complete">完全變態（蝴蝶）</button>
-          <button class="btn secondary" data-type="incomplete">不完全變態（蝗蟲）</button>
-        </div>
-
-        <div class="morph-stage" id="morphWidget">
-          <div class="morph-svg-wrap">
-            <svg viewBox="0 0 300 200" width="100%" role="img" aria-label="昆蟲變態各階段示意圖">
-              <!-- 葉子背景 -->
-              <ellipse cx="150" cy="180" rx="140" ry="18" fill="#bfe39a" />
-
-              <!-- 完全變態 -->
-              <g class="morph-set" data-type="complete">
-                <!-- 卵 -->
-                <g class="morph-fig" data-fig="egg">
-                  <path d="M40 150 Q150 120 260 150" stroke="#8bc34a" stroke-width="8" fill="none" stroke-linecap="round"/>
-                  <ellipse cx="150" cy="138" rx="10" ry="14" fill="#fff7d6" stroke="#e0c873" stroke-width="2"/>
-                  <ellipse cx="128" cy="142" rx="8" ry="11" fill="#fff7d6" stroke="#e0c873" stroke-width="2"/>
-                  <ellipse cx="172" cy="142" rx="8" ry="11" fill="#fff7d6" stroke="#e0c873" stroke-width="2"/>
-                </g>
-                <!-- 幼蟲（毛毛蟲） -->
-                <g class="morph-fig" data-fig="larva" hidden>
-                  <g fill="#7cb342" stroke="#558b2f" stroke-width="2">
-                    <circle cx="90" cy="120" r="18"/><circle cx="115" cy="122" r="18"/>
-                    <circle cx="140" cy="122" r="18"/><circle cx="165" cy="122" r="18"/>
-                    <circle cx="190" cy="120" r="18"/><circle cx="213" cy="118" r="16"/>
-                  </g>
-                  <circle cx="78" cy="116" r="14" fill="#33691e"/>
-                  <circle cx="73" cy="112" r="3" fill="#fff"/>
-                </g>
-                <!-- 蛹 -->
-                <g class="morph-fig" data-fig="pupa" hidden>
-                  <line x1="150" y1="60" x2="150" y2="80" stroke="#8d6e63" stroke-width="3"/>
-                  <path d="M150 80 Q120 100 130 150 Q150 175 170 150 Q180 100 150 80 Z" fill="#7d9b53" stroke="#5b7038" stroke-width="3"/>
-                  <path d="M138 100 L162 100 M140 120 L160 120 M142 138 L158 138" stroke="#5b7038" stroke-width="2"/>
-                </g>
-                <!-- 成蟲（蝴蝶） -->
-                <g class="morph-fig" data-fig="adult" hidden>
-                  <ellipse cx="150" cy="120" rx="6" ry="34" fill="#5a3a14"/>
-                  <g fill="#ff8f3f" stroke="#d2691e" stroke-width="2">
-                    <path d="M150 105 Q100 60 110 110 Q120 135 150 120 Z"/>
-                    <path d="M150 105 Q200 60 190 110 Q180 135 150 120 Z"/>
-                    <path d="M150 122 Q108 135 120 160 Q145 165 150 135 Z"/>
-                    <path d="M150 122 Q192 135 180 160 Q155 165 150 135 Z"/>
-                  </g>
-                  <circle cx="125" cy="95" r="6" fill="#fff3c4"/><circle cx="175" cy="95" r="6" fill="#fff3c4"/>
-                  <path d="M150 92 Q140 78 134 80 M150 92 Q160 78 166 80" stroke="#5a3a14" stroke-width="2" fill="none"/>
-                </g>
-              </g>
-
-              <!-- 不完全變態 -->
-              <g class="morph-set" data-type="incomplete" hidden>
-                <!-- 卵 -->
-                <g class="morph-fig" data-fig="i-egg">
-                  <ellipse cx="150" cy="150" rx="40" ry="20" fill="#d6b06b" opacity=".5"/>
-                  <ellipse cx="140" cy="148" rx="7" ry="12" fill="#fff7d6" stroke="#e0c873" stroke-width="2"/>
-                  <ellipse cx="158" cy="150" rx="7" ry="12" fill="#fff7d6" stroke="#e0c873" stroke-width="2"/>
-                </g>
-                <!-- 若蟲（像縮小版成蟲，無翅） -->
-                <g class="morph-fig" data-fig="i-nymph" hidden>
-                  <ellipse cx="150" cy="130" rx="34" ry="14" fill="#9ccc65" stroke="#689f38" stroke-width="2"/>
-                  <circle cx="116" cy="128" r="11" fill="#7cb342"/>
-                  <circle cx="112" cy="125" r="2.5" fill="#222"/>
-                  <path d="M120 105 Q110 90 104 92" stroke="#558b2f" stroke-width="2" fill="none"/>
-                  <g stroke="#558b2f" stroke-width="4" stroke-linecap="round">
-                    <path d="M140 142 L132 160"/><path d="M155 142 L150 160"/>
-                    <path d="M172 138 L190 158"/>
-                  </g>
-                </g>
-                <!-- 成蟲（蝗蟲，有翅） -->
-                <g class="morph-fig" data-fig="i-adult" hidden>
-                  <ellipse cx="150" cy="120" rx="46" ry="17" fill="#8bc34a" stroke="#558b2f" stroke-width="2"/>
-                  <path d="M150 108 Q200 100 196 124 Q170 130 150 124 Z" fill="#aed581" stroke="#558b2f" stroke-width="2"/>
-                  <circle cx="106" cy="118" r="13" fill="#7cb342"/>
-                  <circle cx="101" cy="114" r="3" fill="#222"/>
-                  <path d="M112 92 Q104 74 98 76" stroke="#558b2f" stroke-width="3" fill="none"/>
-                  <g stroke="#558b2f" stroke-width="5" stroke-linecap="round">
-                    <path d="M150 134 L142 158"/><path d="M168 132 L188 160"/>
-                    <path d="M120 132 L112 156"/>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </div>
-          <div class="stage-labels" id="morphLabels"></div>
-          <p class="feedback" id="morphCaption" style="text-align:center"></p>
-          <div class="controls" style="justify-content:center">
-            <button class="btn" id="morphPlay">▶ 播放</button>
-            <button class="btn secondary" id="morphStep">下一階段 ⏭</button>
-            <button class="btn secondary" id="morphReset">🔄 重設</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card" id="completeBox"><h3>🦋 完全變態：身體大改造</h3></div>
-        <div class="card" id="incompleteBox"><h3>🦗 不完全變態：慢慢長大</h3></div>
-      </div>
-
-      <div class="card" id="moltBox"></div>
-    </section>
-
-    <!-- ===== 昆蟲重要嗎 ===== -->
-    <section class="panel" id="panel-important" role="tabpanel">
-      <h2 class="section-title">🌍 昆蟲重要嗎</h2>
-      <p class="lead">別看昆蟲小小的，牠們對大自然和我們的生活非常重要！</p>
-
-      <!-- 授粉模擬 -->
-      <div class="card">
-        <h3>🐝 互動模擬：蜜蜂幫花朵授粉</h3>
-        <p>點點看每一朵花，讓蜜蜂飛來授粉，看看會發生什麼事！</p>
-        <div style="text-align:center">
-          <svg viewBox="0 0 400 220" width="100%" style="max-width:560px" id="pollinate" role="img" aria-label="蜜蜂在花朵間飛行授粉的模擬">
-            <rect x="0" y="170" width="400" height="50" fill="#bfe39a"/>
-            <!-- 蜜蜂 -->
-            <g class="bee-fly">
-              <ellipse cx="40" cy="40" rx="16" ry="11" fill="#ffce4d" stroke="#5a3a14" stroke-width="2"/>
-              <path d="M34 30 v20 M42 30 v20" stroke="#5a3a14" stroke-width="3"/>
-              <ellipse cx="30" cy="34" rx="9" ry="6" fill="#cfe8ff" opacity=".8"/>
-              <circle cx="54" cy="38" r="6" fill="#5a3a14"/>
-            </g>
-            <!-- 三朵花 -->
-            <g class="flower" transform="translate(80,140)">
-              <line x1="0" y1="0" x2="0" y2="40" stroke="#4caf72" stroke-width="5"/>
-              <g class="petals"><circle class="petal" cx="0" cy="-18" r="11" fill="#f7c5d9"/><circle class="petal" cx="-15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="-9" cy="10" r="11" fill="#f7c5d9"/><circle class="petal" cx="9" cy="10" r="11" fill="#f7c5d9"/></g>
-              <circle cx="0" cy="-4" r="8" fill="#ffce4d"/>
-              <circle class="fruit" cx="22" cy="-2" r="9" fill="#e8513b" opacity="0"/>
-            </g>
-            <g class="flower" transform="translate(200,150)">
-              <line x1="0" y1="0" x2="0" y2="40" stroke="#4caf72" stroke-width="5"/>
-              <g class="petals"><circle class="petal" cx="0" cy="-18" r="11" fill="#f7c5d9"/><circle class="petal" cx="-15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="-9" cy="10" r="11" fill="#f7c5d9"/><circle class="petal" cx="9" cy="10" r="11" fill="#f7c5d9"/></g>
-              <circle cx="0" cy="-4" r="8" fill="#ffce4d"/>
-              <circle class="fruit" cx="22" cy="-2" r="9" fill="#e8513b" opacity="0"/>
-            </g>
-            <g class="flower" transform="translate(320,140)">
-              <line x1="0" y1="0" x2="0" y2="40" stroke="#4caf72" stroke-width="5"/>
-              <g class="petals"><circle class="petal" cx="0" cy="-18" r="11" fill="#f7c5d9"/><circle class="petal" cx="-15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="15" cy="-6" r="11" fill="#f7c5d9"/><circle class="petal" cx="-9" cy="10" r="11" fill="#f7c5d9"/><circle class="petal" cx="9" cy="10" r="11" fill="#f7c5d9"/></g>
-              <circle cx="0" cy="-4" r="8" fill="#ffce4d"/>
-              <circle class="fruit" cx="22" cy="-2" r="9" fill="#e8513b" opacity="0"/>
-            </g>
-          </svg>
-        </div>
-        <p class="feedback" id="pollinateFeedback"></p>
-        <div class="controls"><button class="btn secondary" id="pollinateReset">🔄 重新開始</button></div>
-      </div>
-
-      <div class="grid grid-2" id="rolesList"></div>
-      <div class="card" id="balanceBox"></div>
-      <div class="key-box" id="importantKey"></div>
-    </section>
-
-    <!-- ===== 生活應用 ===== -->
-    <section class="panel" id="panel-apply" role="tabpanel">
-      <h2 class="section-title">🍎 生活應用</h2>
-      <p class="lead">昆蟲就在我們的生活周遭，一起想想看牠們和我們的關係吧！</p>
-      <div class="grid grid-2" id="appList"></div>
-    </section>
-
-    <!-- ===== 闖關大挑戰 ===== -->
-    <section class="panel" id="panel-quiz" role="tabpanel">
-      <h2 class="section-title">🏆 闖關大挑戰</h2>
-      <p class="lead">總共 10 關，題目都來自前面學過的內容。準備好了嗎？</p>
-      <div id="quizArea">
-        <div class="card" style="text-align:center">
-          <div class="big-emoji" style="font-size:3rem">🎯</div>
-          <h3>昆蟲小偵探，接受挑戰吧！</h3>
-          <p>答完每一題都會告訴你答案和原因，最後還有成績喔！</p>
-          <button class="btn big" id="quizStart">開始闖關 🚀</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 自主學習 ===== -->
-    <section class="panel" id="panel-resources" role="tabpanel">
-      <h2 class="section-title">📚 自主學習</h2>
-      <p class="lead" id="resNote"></p>
-      <div class="grid grid-2" id="resList"></div>
     </section>
   </main>
 
-  <div class="foot-nav">
-    <button class="btn secondary" id="prevBtn" disabled>⬅ 上一頁</button>
-    <button class="btn" id="nextBtn">下一頁 ➡</button>
-  </div>
-
-  <footer class="site-footer">
-    <p>昆蟲大解密 ｜ 國小中年級自然科學互動教材 ｜ 內容依十二年國教自然領域精神設計</p>
-    <p>本教材以 CC BY 4.0 授權分享，歡迎教師教學使用。</p>
-  </footer>
+  <div id="footNav"></div>
+  <footer id="siteFooter"></footer>
 
   <script src="js/progress.js"></script>
-  <script src="js/navigation.js"></script>
-  <script src="js/interactions.js"></script>
-  <script src="js/quiz.js"></script>
+  <script src="js/chrome.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

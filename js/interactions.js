@@ -188,15 +188,12 @@
     render();
   };
 
-  /* ---------- 3. 變態動畫 ---------- */
-  Interactions.initMorph = function () {
+  /* ---------- 3. 變態動畫（文字與圖逐階段對應） ---------- */
+  // data = { complete: [{name, fig, text}, ...], incomplete: [...] }
+  Interactions.initMorph = function (data) {
     const wrap = document.getElementById("morphWidget");
-    if (!wrap) return;
+    if (!wrap || !data) return;
 
-    const TYPES = {
-      complete: { stages: ["卵", "幼蟲", "蛹", "成蟲"], figs: ["egg", "larva", "pupa", "adult"] },
-      incomplete: { stages: ["卵", "若蟲", "成蟲"], figs: ["i-egg", "i-nymph", "i-adult"] }
-    };
     let type = "complete";
     let step = 0;
     let timer = null;
@@ -206,54 +203,73 @@
     const stepBtn = document.getElementById("morphStep");
     const resetBtn = document.getElementById("morphReset");
     const caption = document.getElementById("morphCaption");
+    const desc = document.getElementById("morphDesc");
+
+    function stages() { return data[type]; }
+
+    // SVG 元素沒有 HTMLElement 的 hidden 屬性 (IDL)，必須直接操作 attribute
+    function setHidden(elm, hide) {
+      if (hide) elm.setAttribute("hidden", "");
+      else elm.removeAttribute("hidden");
+    }
 
     function showType(t) {
       type = t; stop(); step = 0;
       document.querySelectorAll(".morph-tabs .btn").forEach((b) =>
         b.classList.toggle("secondary", b.dataset.type !== t));
-      // 顯示對應 SVG 群組
       document.querySelectorAll(".morph-set").forEach((s) =>
-        s.hidden = s.dataset.type !== t);
+        setHidden(s, s.dataset.type !== t));
       renderLabels();
       update();
     }
 
     function renderLabels() {
       labelsWrap.innerHTML = "";
-      TYPES[type].stages.forEach((s, i) => {
+      stages().forEach((s, i) => {
+        if (i > 0) {
+          const arrow = document.createElement("span");
+          arrow.className = "rail-arrow";
+          arrow.setAttribute("aria-hidden", "true");
+          arrow.textContent = "→";
+          labelsWrap.appendChild(arrow);
+        }
         const span = document.createElement("span");
-        span.textContent = s;
+        span.className = "rail-stage";
+        span.textContent = s.name;
         span.dataset.i = i;
+        span.tabIndex = 0;
+        span.setAttribute("role", "button");
+        span.addEventListener("click", () => { stop(); step = i; update(); });
+        span.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); stop(); step = i; update(); }
+        });
         labelsWrap.appendChild(span);
       });
     }
 
     function update() {
-      const conf = TYPES[type];
+      const conf = stages();
+      const cur = conf[step];
       const set = document.querySelector('.morph-set[data-type="' + type + '"]');
       set.querySelectorAll(".morph-fig").forEach((f) => {
-        f.hidden = f.dataset.fig !== conf.figs[step];
+        setHidden(f, f.dataset.fig !== cur.fig);
       });
-      labelsWrap.querySelectorAll("span").forEach((sp, i) =>
-        sp.classList.toggle("on", i === step));
-      const names = conf.stages;
-      caption.textContent = "現在是「" + names[step] + "」階段（" + (step + 1) + "／" + names.length + "）";
+      labelsWrap.querySelectorAll(".rail-stage").forEach((sp) =>
+        sp.classList.toggle("on", Number(sp.dataset.i) === step));
+      if (caption) caption.textContent =
+        "第 " + (step + 1) + " 步／共 " + conf.length + " 步：" + cur.name;
+      if (desc) desc.textContent = cur.text;
     }
 
-    function next() {
-      const len = TYPES[type].stages.length;
-      step = (step + 1) % len;
-      update();
-    }
+    function next() { step = (step + 1) % stages().length; update(); }
 
     function play() {
       if (timer) { stop(); return; }
       playBtn.textContent = "⏸ 暫停";
       timer = setInterval(() => {
-        const len = TYPES[type].stages.length;
-        if (step === len - 1) { stop(); return; }
+        if (step === stages().length - 1) { stop(); return; }
         next();
-      }, 1500);
+      }, 2200);
     }
     function stop() {
       if (timer) { clearInterval(timer); timer = null; }

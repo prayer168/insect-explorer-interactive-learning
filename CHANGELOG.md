@@ -2,6 +2,17 @@
 
 本專案版本格式採用語意化版本（Semantic Versioning）。
 
+## [0.2.0] - 2026-06-19
+### 變更
+- 改為**多頁式網站**：每個單元獨立為一個 HTML 檔（index / where / grow / important / apply / quiz / resources），以連結在頁面間切換，取代原本單一 index.html 的 JavaScript 切換。
+- 新增共用版面模組 `js/chrome.js`（頁首、頁籤導覽、上一頁／下一頁、鍵盤左右鍵），移除 `js/navigation.js`。
+- `js/app.js` 改為依頁面（`body[data-page]`）只渲染該頁內容並啟動對應互動。
+### 改善
+- 變態 SVG 動畫重繪得更精確（毛毛蟲分節與腹足、垂掛的蛹與懸絲、蝴蝶前後翅與棒狀觸角；蝗蟲卵莢、有翅芽的若蟲、強健後腿的成蟲）。
+- 變態動畫改為**圖文逐階段對應**：新增階段流程列（含箭頭、可點選）與同步說明文字。
+### 修正
+- 修正 SVG `<g>` 無法以 `element.hidden` 屬性切換顯示的問題（改用 attribute 並補上 `.morph-set[hidden]` CSS），先前各階段圖其實未真正切換、且隱藏的變態類型會透出。
+
 ## [0.1.0] - 2026-06-19
 ### 新增
 - 初始化專案結構與 Git 版本控制。
@@ -13,4 +24,5 @@
 - 學習進度記錄（localStorage）、RWD 響應式版面、無障礙與降低動態支援。
 - 建立 README、LICENSE（CC BY 4.0）與 docs 文件。
 
+[0.2.0]: #
 [0.1.0]: #

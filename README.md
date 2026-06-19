@@ -2,7 +2,7 @@
 
 一份適合**國小中年級（3–4 年級）**的自然科學互動式數位教材。帶著小朋友一起化身昆蟲小偵探，認識昆蟲的身體、棲息地、成長變化，以及昆蟲對大自然的重要性。
 
-> 本教材以純 HTML5 / CSS3 / SVG / 原生 JavaScript 製作，不依賴大型框架，可直接部署於 GitHub Pages。
+> 本教材以純 HTML5 / CSS3 / SVG / 原生 JavaScript 製作，採**多頁式網站**（每個單元一個 HTML 檔），不依賴大型框架，可直接部署於 GitHub Pages。
 
 ---
 
@@ -68,9 +68,15 @@ npx serve .
 
 ```
 insect/
-├─ index.html          # 主頁面（7 個頁籤）
+├─ index.html          # 學習任務（首頁）
+├─ where.html          # 昆蟲在哪裡
+├─ grow.html           # 昆蟲如何長大
+├─ important.html      # 昆蟲重要嗎
+├─ apply.html          # 生活應用
+├─ quiz.html           # 闖關大挑戰
+├─ resources.html      # 自主學習
 ├─ css/                # style / animation / responsive
-├─ js/                 # app / navigation / interactions / quiz / progress
+├─ js/                 # chrome（共用版面）/ app / interactions / quiz / progress
 ├─ data/               # content / quiz / resources / curriculum (JSON)
 ├─ docs/               # 教案、設計規格、參考資料、測試報告
 ├─ assets/             # 圖片與圖示

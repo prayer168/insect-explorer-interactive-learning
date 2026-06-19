@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>昆蟲大解密 ｜ 昆蟲在哪裡</title>
+  <meta name="description" content="認識昆蟲的身體（頭、胸、腹與六隻腳）、棲息地，並用互動遊戲分辨昆蟲與非昆蟲。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body data-page="where">
+  <header id="siteHeader"></header>
+  <nav id="tabNav"></nav>
+
+  <main>
+    <h2 class="section-title">🔍 昆蟲在哪裡</h2>
+    <p class="lead">昆蟲幾乎到處都有！只要仔細看，你就會發現牠們躲在許多地方。</p>
+
+    <div class="card">
+      <h3>🐞 先認識昆蟲的身體</h3>
+      <p>昆蟲的身體分成三個部分，記住這個特徵，你就能一眼認出昆蟲！</p>
+      <div style="text-align:center">
+        <svg viewBox="0 0 420 200" width="100%" style="max-width:460px" role="img" aria-label="昆蟲身體分為頭、胸、腹三部分，六隻腳全部長在胸部，並有一對觸角">
+          <!-- 腹（最長，分節） -->
+          <ellipse cx="300" cy="100" rx="78" ry="32" fill="#c98a3a" stroke="#8d5a1e" stroke-width="2"/>
+          <g stroke="#8d5a1e" stroke-width="1.5" opacity=".6">
+            <path d="M270 72 V128"/><path d="M300 70 V130"/><path d="M330 72 V128"/><path d="M356 78 V122"/>
+          </g>
+          <!-- 胸（六隻腳與翅膀的中心） -->
+          <ellipse cx="190" cy="100" rx="46" ry="34" fill="#e0a44a" stroke="#8d5a1e" stroke-width="2"/>
+          <!-- 一對翅膀（淡） -->
+          <path d="M190 78 Q150 30 120 60 Q150 84 190 92 Z" fill="#cfe8ff" opacity=".7" stroke="#9bbfd6"/>
+          <path d="M190 78 Q230 30 260 60 Q230 84 190 92 Z" fill="#cfe8ff" opacity=".7" stroke="#9bbfd6"/>
+          <!-- 六隻腳（全部接在胸部，每側三隻） -->
+          <g stroke="#5a3a14" stroke-width="5" stroke-linecap="round" fill="none">
+            <path d="M168 124 Q150 150 132 156"/><path d="M188 130 Q184 158 176 168"/><path d="M210 124 Q224 152 236 158"/>
+            <path d="M168 76 Q150 50 134 46"/><path d="M188 70 Q186 44 180 34"/><path d="M210 76 Q226 52 238 48"/>
+          </g>
+          <!-- 頭（觸角、複眼、口器） -->
+          <circle cx="110" cy="100" r="34" fill="#b5742c" stroke="#8d5a1e" stroke-width="2"/>
+          <path d="M92 76 Q70 40 58 46" stroke="#5a3a14" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M100 70 Q86 36 78 38" stroke="#5a3a14" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <circle cx="58" cy="46" r="4" fill="#5a3a14"/><circle cx="78" cy="38" r="4" fill="#5a3a14"/>
+          <circle cx="100" cy="96" r="9" fill="#2b2b2b"/><circle cx="97" cy="93" r="3" fill="#fff"/>
+          <path d="M86 116 Q96 124 106 116" stroke="#5a3a14" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- 標示 -->
+          <text x="110" y="160" text-anchor="middle" font-size="16" fill="#29382f" font-weight="800">頭</text>
+          <text x="190" y="160" text-anchor="middle" font-size="16" fill="#29382f" font-weight="800">胸</text>
+          <text x="300" y="160" text-anchor="middle" font-size="16" fill="#29382f" font-weight="800">腹</text>
+          <text x="210" y="186" text-anchor="middle" font-size="13" fill="#4f5d54">六隻腳都長在「胸」</text>
+        </svg>
+      </div>
+      <div class="grid grid-3" id="bodyParts"></div>
+      <div class="key-box" id="bodyKey"></div>
+    </div>
+
+    <div class="card">
+      <h3>🎮 互動遊戲：找出畫面中的昆蟲</h3>
+      <p>畫面裡有很多小動物，點點看哪些是昆蟲（有 6 隻腳）！</p>
+      <div class="scene" id="findScene"></div>
+      <p class="score-pill" id="findScore"></p>
+      <p class="feedback" id="findFeedback"></p>
+      <div class="controls"><button class="btn secondary" id="findReset">🔄 重新開始</button></div>
+    </div>
+
+    <div class="card">
+      <h3>🏡 昆蟲住在哪些地方？</h3>
+      <div class="grid grid-3" id="habitatList"></div>
+      <div class="key-box" id="habitatKey"></div>
+    </div>
+
+    <div class="card">
+      <h3>🚫 牠們不是昆蟲喔！</h3>
+      <p>有些小動物看起來很像昆蟲，但腳的數量不對，牠們不是昆蟲。</p>
+      <div class="grid grid-3" id="notInsectList"></div>
+    </div>
+
+    <div class="card">
+      <h3>🧺 互動分類：是昆蟲還是不是？</h3>
+      <p>把每隻小動物拖到正確的盒子。手機可以先點選，再點盒子。</p>
+      <div class="chip-tray" id="sortTray"></div>
+      <div class="sorter">
+        <div class="bin" id="binInsect"><h4>✅ 是昆蟲（6 隻腳）</h4><div class="dropzone"></div></div>
+        <div class="bin" id="binNot"><h4>❌ 不是昆蟲</h4><div class="dropzone"></div></div>
+      </div>
+      <p class="feedback" id="sortFeedback"></p>
+      <div class="controls"><button class="btn secondary" id="sortReset">🔄 重新開始</button></div>
+    </div>
+  </main>
+
+  <div id="footNav"></div>
+  <footer id="siteFooter"></footer>
+
+  <script src="js/progress.js"></script>
+  <script src="js/chrome.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-/* ===== 主程式：載入資料、渲染內容、啟動互動 ===== */
+/* ===== 各頁面內容渲染與互動啟動（多頁式） ===== */
 (function () {
   function el(tag, cls, html) {
     const e = document.createElement(tag);
@@ -13,6 +13,7 @@
     return res.json();
   }
 
+  /* ---------- 各頁渲染 ---------- */
   function renderHome(c) {
     const ul = document.getElementById("homeGoals");
     if (ul) c.goals.forEach((g) => ul.appendChild(el("li", "", g)));
@@ -21,7 +22,6 @@
   }
 
   function renderWhere(w) {
-    // 身體三部分
     const bp = document.getElementById("bodyParts");
     if (bp) {
       w.bodyParts.parts.forEach((p) => {
@@ -32,7 +32,6 @@
       });
       document.getElementById("bodyKey").textContent = w.bodyParts.key.replace("重點：", "");
     }
-    // 棲地
     const hb = document.getElementById("habitatList");
     if (hb) {
       w.habitats.items.forEach((h) => {
@@ -44,7 +43,6 @@
       });
       document.getElementById("habitatKey").textContent = w.habitats.key.replace("重點：", "");
     }
-    // 不是昆蟲
     const ni = document.getElementById("notInsectList");
     if (ni) {
       w.notInsect.items.forEach((n) => {
@@ -57,8 +55,7 @@
   }
 
   function renderGrow(g) {
-    const map = [["completeBox", g.complete], ["incompleteBox", g.incomplete]];
-    map.forEach(([id, d]) => {
+    [["completeBox", g.complete], ["incompleteBox", g.incomplete]].forEach(([id, d]) => {
       const box = document.getElementById(id);
       if (!box) return;
       box.appendChild(el("p", "", d.desc));
@@ -66,7 +63,6 @@
       chain.style.fontSize = "1.15rem";
       box.appendChild(chain);
       box.appendChild(el("p", "", "🐛 例子：" + d.example));
-      box.appendChild(el("p", "", d.story));
       box.appendChild(el("div", "key-box", d.key.replace("重點：", "")));
     });
     const molt = document.getElementById("moltBox");
@@ -131,36 +127,44 @@
   }
 
   async function init() {
-    if (window.Nav) window.Nav.init();
-    if (window.Progress) window.Progress.render();
-    // 互動（不需資料）
-    if (window.Interactions) {
-      Interactions.initFindGame();
-      Interactions.initSorter();
-      Interactions.initMorph();
-      Interactions.initPollination();
-    }
+    const page = document.body.dataset.page || "home";
     try {
-      const [content, quiz, resources] = await Promise.all([
-        loadJSON("data/content.json"),
-        loadJSON("data/quiz.json"),
-        loadJSON("data/resources.json")
-      ]);
-      renderHome(content.home);
-      renderWhere(content.where);
-      renderGrow(content.grow);
-      renderImportant(content.important);
-      renderApplications(content.applications);
-      renderResources(resources);
-      if (window.Quiz) Quiz.init(quiz);
+      if (page === "resources") {
+        renderResources(await loadJSON("data/resources.json"));
+        return;
+      }
+      if (page === "quiz") {
+        if (window.Quiz) Quiz.init(await loadJSON("data/quiz.json"));
+        return;
+      }
+      // 其餘頁面需要 content.json
+      const c = await loadJSON("data/content.json");
+      if (page === "home") renderHome(c.home);
+      else if (page === "where") {
+        renderWhere(c.where);
+        if (window.Interactions) { Interactions.initFindGame(); Interactions.initSorter(); }
+      } else if (page === "grow") {
+        renderGrow(c.grow);
+        if (window.Interactions) Interactions.initMorph(buildMorphData(c.grow));
+      } else if (page === "important") {
+        renderImportant(c.important);
+        if (window.Interactions) Interactions.initPollination();
+      } else if (page === "apply") {
+        renderApplications(c.applications);
+      }
     } catch (e) {
       showError(e.message);
     }
   }
 
+  function buildMorphData(g) {
+    return {
+      complete: g.complete.stageInfo,
+      incomplete: g.incomplete.stageInfo
+    };
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  } else { init(); }
 })();

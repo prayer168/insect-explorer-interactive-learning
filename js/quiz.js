@@ -113,7 +113,7 @@
       back.className = "btn secondary";
       back.style.marginLeft = "10px";
       back.textContent = "回去複習";
-      back.addEventListener("click", () => window.Nav && window.Nav.go("where"));
+      back.addEventListener("click", () => { window.location.href = "where.html"; });
       card.appendChild(back);
 
       host.appendChild(card);
