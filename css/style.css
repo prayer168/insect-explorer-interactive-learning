@@ -69,10 +69,12 @@ body {
   padding: 0 14px;
   display: flex;
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: thin;
+  flex-wrap: wrap;
+  justify-content: center;
   -webkit-overflow-scrolling: touch;
 }
+/* 手機改為可橫向滑動，但隱藏捲軸 */
+.tabs::-webkit-scrollbar { display: none; }
 .tab-btn {
   flex: 0 0 auto;
   border: 2px solid transparent;

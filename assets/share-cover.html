@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; }
+  body {
+    font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+    background:linear-gradient(160deg,#eaf6fb 0%,#d8f3c9 55%,#bfe39a 100%);
+    color:#29382f; position:relative; overflow:hidden;
+  }
+  .deco { position:absolute; opacity:.5; }
+  .wrap { padding:40px 56px; height:100%; display:flex; flex-direction:column; }
+  .emojis { font-size:72px; letter-spacing:8px; line-height:1; }
+  h1 { font-size:84px; font-weight:800; color:#2f7d4f; margin:6px 0 4px; letter-spacing:4px; }
+  .sub { font-size:34px; color:#4f5d54; font-weight:700; margin-bottom:22px; }
+  .units { display:flex; gap:14px; margin-bottom:22px; }
+  .pill {
+    background:#fff; border:3px solid #4caf72; border-radius:999px;
+    padding:12px 24px; font-size:30px; font-weight:800; color:#2f7d4f;
+    box-shadow:0 8px 20px rgba(47,125,79,.15);
+  }
+  .morph {
+    display:flex; align-items:center; gap:18px; font-size:38px; font-weight:800;
+    color:#6b4e00; background:rgba(255,255,255,.7); border-radius:22px;
+    padding:14px 28px; width:fit-content; margin-bottom:auto;
+  }
+  .morph .arrow { color:#4caf72; }
+  .morph .em { font-size:46px; }
+  .foot {
+    display:flex; align-items:center; justify-content:space-between;
+    background:#2f7d4f; color:#fff; border-radius:18px; padding:18px 30px;
+  }
+  .foot .tags { font-size:26px; font-weight:700; }
+  .foot .url { font-size:26px; font-weight:800; background:#ffce4d; color:#5a4300; padding:10px 20px; border-radius:999px; }
+</style>
+</head>
+<body>
+  <div class="deco" style="font-size:340px; right:-40px; top:120px;">🦋</div>
+  <div class="deco" style="font-size:160px; right:340px; top:30px;">🌿</div>
+  <div class="wrap">
+    <div class="emojis">🐝🦋🐞🐜🦗</div>
+    <h1>昆蟲大解密</h1>
+    <div class="sub">國小中年級  · 自然科學互動教材</div>
+    <div class="units">
+      <div class="pill">🔍 昆蟲在哪裡</div>
+      <div class="pill">🦋 昆蟲如何長大</div>
+      <div class="pill">🌍 昆蟲重要嗎</div>
+    </div>
+    <div class="morph">
+      <span class="em">🥚</span><span>卵</span><span class="arrow">→</span>
+      <span>幼蟲</span><span class="arrow">→</span>
+      <span>蛹</span><span class="arrow">→</span>
+      <span class="em">🦋</span><span>成蟲</span>
+    </div>
+    <div class="foot">
+      <div class="tags">🎮 互動遊戲 · 🎬 變態動畫 · 🏆 闖關挑戰</div>
+      <div class="url">免費線上體驗 →</div>
+    </div>
+  </div>
+</body>
+</html>

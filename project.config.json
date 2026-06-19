@@ -2,7 +2,7 @@
   "name": "insect-explorer",
   "title": "昆蟲大解密",
   "repository": "insect-explorer-interactive-learning",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "architecture": "multi-page (每單元一個 HTML)",
   "level": "國小",
   "grade": "中年級（3-4年級）",
