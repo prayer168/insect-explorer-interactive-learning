@@ -1,0 +1,59 @@
+/* ===== 昆蟲大解密 動畫 ===== */
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* 蝴蝶/蜜蜂在場景中輕輕飄動 */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+.critter.fly { animation: floaty 3s ease-in-out infinite; }
+
+/* 翅膀拍動（SVG 用） */
+@keyframes flap {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.6); }
+}
+
+/* 蜜蜂授粉飛行路徑 */
+@keyframes beePath {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(150px, -30px); }
+  50%  { transform: translate(300px, 10px); }
+  75%  { transform: translate(150px, 40px); }
+  100% { transform: translate(0, 0); }
+}
+.bee-fly { animation: beePath 8s linear infinite; }
+
+/* 花朵授粉後變色 */
+.flower-pollinated .petal { transition: fill .6s ease; }
+
+/* 變態階段淡入 */
+.morph-fig { transition: opacity .5s ease; }
+.morph-fig[hidden] { display: none; }
+
+/* 進度條閃光 */
+@keyframes shine {
+  from { box-shadow: 0 0 0 rgba(255,206,77,0); }
+  to { box-shadow: 0 0 12px rgba(255,206,77,.8); }
+}
+
+/* 尊重使用者「減少動態」偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .critter.fly, .bee-fly { animation: none !important; }
+}

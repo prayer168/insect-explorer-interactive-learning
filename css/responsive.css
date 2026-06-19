@@ -1,0 +1,35 @@
+/* ===== 昆蟲大解密 響應式（RWD） ===== */
+
+/* 平板 */
+@media (max-width: 768px) {
+  :root { font-size: 17px; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 1.7rem; }
+  .section-title { font-size: 1.4rem; }
+  .scene { height: 280px; }
+}
+
+/* 手機 */
+@media (max-width: 520px) {
+  :root { font-size: 16px; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .sorter { grid-template-columns: 1fr; }
+  .site-header .bar { justify-content: center; }
+  .progress-wrap { width: 100%; justify-content: center; }
+  .tabs { gap: 6px; }
+  .tab-btn { padding: 9px 13px; font-size: .95rem; }
+  .card { padding: 16px; }
+  .hero { padding: 22px 16px; }
+  .hero .big-emoji { font-size: 3rem; }
+  .foot-nav .btn { flex: 1; }
+  .scene { height: 240px; }
+  .critter { width: 44px; height: 44px; font-size: 1.9rem; }
+  .stage-labels span { font-size: .8rem; }
+  .morph-tabs { flex-wrap: wrap; }
+}
+
+/* 很小的螢幕 */
+@media (max-width: 360px) {
+  :root { font-size: 15px; }
+  .brand { font-size: 1.15rem; }
+}
