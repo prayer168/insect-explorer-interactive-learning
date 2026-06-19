@@ -1,0 +1,70 @@
+{
+  "title": "自主學習資源",
+  "note": "想知道更多昆蟲的祕密嗎？以下是適合小朋友的好網站，記得和家人或老師一起看喔！",
+  "resources": [
+    {
+      "title": "國立自然科學博物館",
+      "url": "https://www.nmns.edu.tw/",
+      "type": "博物館網站",
+      "grade": "國小中高年級",
+      "description": "台灣重要的自然科學博物館，可以查到昆蟲標本、生態知識和展覽資訊。",
+      "checkedAt": "2026-06-19"
+    },
+    {
+      "title": "農業部－農業知識入口網",
+      "url": "https://kmweb.moa.gov.tw/",
+      "type": "政府教育網站",
+      "grade": "國小高年級",
+      "description": "介紹昆蟲與農業的關係，包含授粉昆蟲、益蟲與害蟲的知識。",
+      "checkedAt": "2026-06-19"
+    },
+    {
+      "title": "行政院農業部生物多樣性研究所（特生中心）",
+      "url": "https://www.tbri.gov.tw/",
+      "type": "研究機構網站",
+      "grade": "國小高年級",
+      "description": "研究台灣的生物多樣性，有許多本土昆蟲與生態保育的資料。",
+      "checkedAt": "2026-06-19"
+    },
+    {
+      "title": "臺北市立動物園",
+      "url": "https://www.zoo.gov.taipei/",
+      "type": "動物園網站",
+      "grade": "國小中年級",
+      "description": "設有昆蟲館，介紹蝴蝶、甲蟲等昆蟲的生活與成長，適合親子一起認識昆蟲。",
+      "checkedAt": "2026-06-19"
+    },
+    {
+      "title": "教育部因材網",
+      "url": "https://adl.edu.tw/",
+      "type": "互動學習平台",
+      "grade": "國小中高年級",
+      "description": "教育部的數位學習平台，有自然科的單元與練習，可以登入做互動學習。",
+      "checkedAt": "2026-06-19"
+    },
+    {
+      "title": "國立臺灣博物館",
+      "url": "https://www.ntm.gov.tw/",
+      "type": "博物館網站",
+      "grade": "國小中年級",
+      "description": "台灣歷史最悠久的博物館之一，收藏許多昆蟲標本，常有自然生態展覽。",
+      "checkedAt": "2026-06-19"
+    },
+    {
+      "title": "iNaturalist 愛自然（台灣社群）",
+      "url": "https://www.inaturalist.org/",
+      "type": "公民科學觀察平台",
+      "grade": "國小高年級",
+      "description": "可以上傳自己拍到的昆蟲照片，讓大家一起幫忙辨認，學習觀察與記錄。",
+      "checkedAt": "2026-06-19"
+    },
+    {
+      "title": "臺灣物種名錄 TaiCOL",
+      "url": "https://taicol.tw/",
+      "type": "知識資料庫",
+      "grade": "國小高年級",
+      "description": "由中央研究院維護，可以查詢台灣各種昆蟲與生物的名稱和分類。",
+      "checkedAt": "2026-06-19"
+    }
+  ]
+}
